@@ -1,4 +1,3 @@
-SET(OpenCV_DIR "/home/ratnesh/Downloads/opencv-3.2.0/build/")
 FIND_PACKAGE(Threads REQUIRED) #for Cimg
 FIND_PACKAGE(X11) # for Cimg
 include_directories(${X11_INCLUDE_DIRS}) #for Cimg
