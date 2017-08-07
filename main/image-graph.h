@@ -119,11 +119,10 @@ public:
 };
 
 
-// tests using dijkstra
-void test_image_dij()
+// tests using dijkstra [todo: break this function]
+void test_image_dij(const string& imgFname)
 {
-    CImg<unsigned char> image("/home/ratnesh/ghar_sansar/unnamed_removed_manual.png");
-    //CImg<unsigned char> image("/home/ratnesh/Downloads/image.jpg");
+    CImg<unsigned char> image(imgFname.c_str());
     image_graph<unsigned char> ig(image);
     // function to get seeds
     CImgDisplay main_disp(image, "click for seeds");
@@ -146,8 +145,6 @@ void test_image_dij()
     for (auto& p : points)
       {
           seeds.emplace_back(ig.grid2idx(p.first, p.second));
-          //cout << "verify " << ig.idx2grid(ig.grid2idx(p.first, p.second)).first << " " <<
-          //ig.idx2grid(ig.grid2idx(p.first, p.second)).second << endl;
           cout <<(ig.grid2idx(p.first, p.second))  << endl;
       }
     //
@@ -176,7 +173,7 @@ void test_image_dij()
           dMap(loc.first, loc.second, 0, 2) = val.b;
           rawDist(loc.first, loc.second, 0, 0) = d;
       }
-    (dMap, rawDist).display("Check distance map!");
+    (dMap, rawDist).display("Check distance map! and raw distances (on right)");
     // lets look at segmentation IDs
     auto segIds = dij.getSegmentationId();
     CImg<uint> segMap(image.width(), image.height(), 1, 1, 0);
@@ -186,7 +183,7 @@ void test_image_dij()
           auto segId = segIds[i];
           segMap(loc.first, loc.second, 0, 0) = segId;
       }
-    (dMap, segMap).display("Check segmentation Ids!");
+    (dMap, segMap).display("segmentation Ids on right image!");
 }
 
 
