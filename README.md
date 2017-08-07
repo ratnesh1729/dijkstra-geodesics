@@ -5,3 +5,5 @@
 - How to use - ./main/fit [image-path]
   Click on some points to select seeds - as many seeds as valid inputs.
   Close the image window and click spacebar to see segmentation id.
+- Currently, for images - L2 norm between pixel values is the geodesic distance.
+- For other graphs, please see test/ folder.
